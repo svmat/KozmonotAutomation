@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87649b49-f08a-4866-b2c6-b2e5ee6ae552" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Feature/AddingNewProducts/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Feature/AddingNewProducts/steps/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Feature/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UIElement.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alerts.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/browser.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config_reader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dropdown.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/iframe.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ini_file_reader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/json_file_reader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
