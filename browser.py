@@ -11,7 +11,7 @@ class Browser:
         if browser_name.lower() == "firefox":
             self.driver = webdriver.Firefox(executable_path='drivers/geckodriver')
         else:
-            self.driver = webdriver.Chrome(executable_path='../drivers/chromedriver')
+            self.driver = webdriver.Chrome(executable_path=r"C:\Users\Aleksei ThinkPad\PycharmProjects\chromedriver.exe")
 
         self.driver.get(url)
         self.wait = WebDriverWait(self.driver, 10)

@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="87649b49-f08a-4866-b2c6-b2e5ee6ae552" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Pages/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pages/cargo_bay_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pages/left_menu.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pages/select_product_type_menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/KozmonotAutomation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/KozmonotAutomation.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Feature/AddingNewProducts/add_product.feature" beforeDir="false" afterPath="$PROJECT_DIR$/Feature/AddingNewProducts/add_product.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Feature/AddingNewProducts/steps/add_product_steps.py" beforeDir="false" afterPath="$PROJECT_DIR$/Feature/AddingNewProducts/steps/add_product_steps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/browser.py" beforeDir="false" afterPath="$PROJECT_DIR$/browser.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,11 +41,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Python_my_projects/PycharmProjects/pythonProject" />
+    <property name="settings.editor.selected.configurable" value="trusted.hosts" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Aleksei ThinkPad\Documents\KozmonotAutomation\Pages" />
+      <recent name="C:\Users\Aleksei ThinkPad\Documents\KozmonotAutomation\Feature\AddingNewProducts" />
       <recent name="C:\Users\Aleksei ThinkPad\Documents\KozmonotAutomation" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Aleksei ThinkPad\Documents\KozmonotAutomation\Pages" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -61,5 +75,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
