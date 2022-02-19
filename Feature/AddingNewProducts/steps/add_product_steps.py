@@ -2,9 +2,11 @@ from behave import given, when, then
 from Pages.left_menu import LeftMenu
 from Pages.cargo_bay_page import CargoBay
 from Pages.select_product_type_menu import SelectProductType
+from Pages.music_add_page import MusicAdd
 from browser import Browser
 from UIElement import UIElement as Element
 from selenium.webdriver.common.by import By
+
 import time
 
 URL = "http://app.kozmonot.tech/"
@@ -43,7 +45,7 @@ def add_new_product_btn(context):
 def open_new_product_page(context, field):
     select_product_type = SelectProductType(context.browser)
     if field == "music":
-        select_product_type.click_media_btn()
+        select_product_type.click_music_btn()
 
     elif field == "film":
         select_product_type.click_film_btn()
@@ -57,18 +59,37 @@ def open_new_product_page(context, field):
 
 @when('enter data in "{field}" required fields')
 def requred_fields_input(context, field):
-    pass
+    music_add = MusicAdd(context.browser)
+    if field == "music":
+        music_add.artist_name_input()
+        music_add.opening_price_input()
+        music_add.album_name_input()
+        music_add.quantity_input()
+        music_add.product_format_input()
+        music_add.media_condition_input()
+        music_add.sleeve_cond_input()
+        music_add.asking_price_input()
+        time.sleep(3)
+
+    context.music_add = music_add
 
 
-@when('click "Add product" button')
-def add_product_btn(context):
-    pass
+@when('click "Add product" "{field}" button')
+def add_product_btn(context, field):
+    music_add = context.music_add
+    if field == "music":
+        music_add.add_product_btn_click()
+
+    time.sleep(2)
+
 
 
 @then('New "{field}" item was created warning pops up')
 def new_item_created_verify(context, field):
     if field == "music":
-        pass
+        music_add = context.music_add
+        music_add.success_message_check()
+
     elif field == "film":
         pass
     elif field == "card":

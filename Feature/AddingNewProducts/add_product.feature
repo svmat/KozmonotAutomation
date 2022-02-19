@@ -10,13 +10,13 @@ Feature: Add new product
   Scenario Outline: a user add new "<field>" item with data in required fields only
     When user open new  "<field>" item page
     When enter data in "<field>" required fields
-    And click "Add product" button
+    And click "Add product" "<field>" button
     Then New "<field>" item was created warning pops up
 
   Examples:
     |field|
     |music|
-    |film |
+   """ |film |
     |card |
     |shoes|
 
