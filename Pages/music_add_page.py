@@ -1,6 +1,7 @@
 from UIElement import UIElement as Element
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
+import time
 
 
 class MusicAdd:
@@ -39,23 +40,33 @@ class MusicAdd:
 
         self.add_product_btn = Element(browser, By.XPATH, "//*[text()='Add Product']")
         self.success_message = Element(browser, By.XPATH, "//*[@class='success-message']")
+        #this field is required. messages
+        self.field_is_required_1 = Element(browser, By.XPATH, "//div[1]/div[1]/div[1]/span")
+        self.field_is_required_2 = Element(browser, By.XPATH, "//div/div[2]/div/span")
+        self.field_is_required_3 = Element(browser, By.XPATH, "//div/div[3]/div/span")
+        self.field_is_required_4 = Element(browser, By.XPATH, "//div/div[4]/div/span")
+        self.field_is_required_5 = Element(browser, By.XPATH, "//div[1]/div[1]/div[2]/span")
+        self.field_is_required_6 = Element(browser, By.XPATH, "//div/div[1]/div[2]/div[2]/span")
+        self.field_is_required_7 = Element(browser, By.XPATH, "//div[1]/div[3]/div[2]/span")
+        self.field_is_required_8 = Element(browser, By.XPATH, "//div[1]/div[4]/div[2]/span")
 
     # required fields functions
 
-    def artist_name_input(self, name='John Smith'):
+    def artist_name_input(self, name='John S'):
         self.artist_name.enter_text(name)
 
     def opening_price_input(self, price='10'):
         self.opening_price.enter_text(price)
 
-    def album_name_input(self, album='Album22'):
+    def album_name_input(self, album='Album77'):
         self.album_name.enter_text(album)
 
-    def quantity_input(self, quantity='2'):
+    def quantity_input(self, quantity='7'):
         self.quantity.enter_text(quantity)
 
     def product_format_input(self):
         self.product_format.click()
+        time.sleep(2)
         self.product_format_option.click()
 
     def media_condition_input(self):
@@ -112,5 +123,17 @@ class MusicAdd:
 
     def success_message_check(self):
         self.success_message.wait_until_visible()
+
+    #This field is required. warning pops up
+
+    def this_field_is_required_check(self):
+        self.field_is_required_1.wait_until_visible()
+        self.field_is_required_2.wait_until_visible()
+        self.field_is_required_3.wait_until_visible()
+        self.field_is_required_4.wait_until_visible()
+        self.field_is_required_5.wait_until_visible()
+        self.field_is_required_6.wait_until_visible()
+        self.field_is_required_7.wait_until_visible()
+        self.field_is_required_8.wait_until_visible()
 
 

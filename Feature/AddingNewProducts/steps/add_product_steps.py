@@ -20,9 +20,9 @@ def download_cargo_bay_page(context):
     sign_in_btn = Element(browser, By.XPATH, "//*[text()='Sign In']")
     sign_in_btn.click()
     user_name = Element(browser, By.XPATH, "//*[@id='id_username']")
-    user_name.enter_text("aleknevus@gmail.com")
+    user_name.enter_text("nevzorov74@gmail.com")
     password = Element(browser, By.XPATH, "//*[@id='id_password']")
-    password.enter_text("Chicago20")
+    password.enter_text("Huston22")
     sign_in_btn = Element(browser, By.XPATH, "//*[@type='submit']")
     sign_in_btn.click()
     # open cargo bay page
@@ -54,34 +54,34 @@ def open_new_product_page(context, field):
         select_product_type.click_cards_btn()
     elif field == "shoes":
         select_product_type.click_shoe_btn()
-    #time.sleep(1)
+    # time.sleep(1)
 
 
 @when('enter data in "{field}" required fields')
 def requred_fields_input(context, field):
-    music_add = MusicAdd(context.browser)
     if field == "music":
+        music_add = MusicAdd(context.browser)
+        music_add.media_condition_input()
+        music_add.product_format_input()
         music_add.artist_name_input()
         music_add.opening_price_input()
         music_add.album_name_input()
         music_add.quantity_input()
-        music_add.product_format_input()
-        music_add.media_condition_input()
         music_add.sleeve_cond_input()
         music_add.asking_price_input()
+        context.music_add = music_add
         time.sleep(3)
 
-    context.music_add = music_add
+
 
 
 @when('click "Add product" "{field}" button')
 def add_product_btn(context, field):
-    music_add = context.music_add
+
     if field == "music":
+        music_add = context.music_add
         music_add.add_product_btn_click()
-
-    time.sleep(2)
-
+        print('$!!!')
 
 
 @then('New "{field}" item was created warning pops up')
@@ -100,9 +100,24 @@ def new_item_created_verify(context, field):
 
 @when('enter data in "{field}" all non required fields')
 def non_required_fields_input(context, field):
-    pass
+    if field == "music":
+        music_add = context.music_add
+        music_add.label_input()
+        music_add.catalog_number_input()
+        music_add.discogs_link_input()
+        music_add.notes_input()
+        music_add.press_input()
+        music_add.category_input()
+        music_add.release_year_input()
+        music_add.country_input()
+        music_add.condition_details_input()
+        music_add.features_input()
+        time.sleep(3)
 
 
 @then('"This field is required" warnings pops up under all "{field}" required fields')
 def requred_fields_warning(context, field):
-    pass
+    if field == 'music':
+        music_add = context.music_add
+        print('SSS!!!')
+        music_add.this_field_is_required_check()
