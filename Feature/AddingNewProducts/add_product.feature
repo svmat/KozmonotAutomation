@@ -2,7 +2,7 @@
 @wip
 Feature: Add new product
   Background:
-    Given "Cargo Bay" page downloaded
+    Given "Cargo Bay" page loaded
     When user click "Add new product" button
 
 
@@ -15,7 +15,7 @@ Feature: Add new product
 
   Examples:
     |field|
-    |music|
+    |film|
 
 
    @positive @skip
@@ -27,7 +27,7 @@ Feature: Add new product
     #Then New "<field>" item was created warning pops up
        Examples:
     |field|
-    |music|
+    |film|
 
 
   @negative @skip
@@ -39,7 +39,7 @@ Feature: Add new product
 
   Examples:
     |field|
-    |music|
+    |film|
 
 
 

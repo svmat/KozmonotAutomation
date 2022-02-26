@@ -37,7 +37,6 @@ class MusicAdd:
         self.condition_details_option = Element(browser, By.XPATH, "//*[@value='Slight Edge/Shelf Wear']")
         self.features = Element(browser, By.XPATH, "//*[@name='features']")
         self.features_option = Element(browser, By.XPATH, "//*[@value='Club Pressing']")
-
         self.add_product_btn = Element(browser, By.XPATH, "//*[text()='Add Product']")
         self.success_message = Element(browser, By.XPATH, "//*[@class='success-message']")
         #this field is required. messages
@@ -66,7 +65,6 @@ class MusicAdd:
 
     def product_format_input(self):
         self.product_format.click()
-        time.sleep(2)
         self.product_format_option.click()
 
     def media_condition_input(self):

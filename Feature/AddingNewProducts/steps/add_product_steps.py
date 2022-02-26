@@ -3,26 +3,28 @@ from Pages.left_menu import LeftMenu
 from Pages.cargo_bay_page import CargoBay
 from Pages.select_product_type_menu import SelectProductType
 from Pages.music_add_page import MusicAdd
+from Pages.film_add_page import FilmAdd
 from browser import Browser
 from UIElement import UIElement as Element
 from selenium.webdriver.common.by import By
+
 
 import time
 
 URL = "http://app.kozmonot.tech/"
 
 
-@given('"Cargo Bay" page downloaded')
-def download_cargo_bay_page(context):
+@given('"Cargo Bay" page loaded')
+def load_cargo_bay_page(context):
     browser = Browser(URL, "chrome")
     context.browser = browser
     # sign in procedure
     sign_in_btn = Element(browser, By.XPATH, "//*[text()='Sign In']")
     sign_in_btn.click()
     user_name = Element(browser, By.XPATH, "//*[@id='id_username']")
-    user_name.enter_text("nevzorov74@gmail.com")
+    user_name.enter_text("abvgd@gmail.com")
     password = Element(browser, By.XPATH, "//*[@id='id_password']")
-    password.enter_text("Huston22")
+    password.enter_text("Huston66")
     sign_in_btn = Element(browser, By.XPATH, "//*[@type='submit']")
     sign_in_btn.click()
     # open cargo bay page
@@ -31,13 +33,13 @@ def download_cargo_bay_page(context):
     cargo_bay = CargoBay(context.browser)
     assert cargo_bay.title_of_page_get_title() == 'Cargo Bay'
     context.cargo_bay = cargo_bay
-    # browser.shutdown()
 
 
 @when('user click "Add new product" button')
 def add_new_product_btn(context):
     cargo_bay = context.cargo_bay
     cargo_bay.click_add_new_product_btn()
+
     # time.sleep(2)
 
 
@@ -52,6 +54,7 @@ def open_new_product_page(context, field):
 
     elif field == "card":
         select_product_type.click_cards_btn()
+
     elif field == "shoes":
         select_product_type.click_shoe_btn()
     # time.sleep(1)
@@ -70,19 +73,30 @@ def requred_fields_input(context, field):
         music_add.sleeve_cond_input()
         music_add.asking_price_input()
         context.music_add = music_add
-        time.sleep(3)
 
+    if field == "film":
+        film_add = FilmAdd(context.browser)
+        film_add.title_input()
+        film_add.film_condition_input()
+        film_add.opening_price_input()
+        film_add.product_format_input()
+        film_add.quantity_input()
+        film_add.asking_price_input()
+        context.film_add = film_add
 
 
 
 @when('click "Add product" "{field}" button')
 def add_product_btn(context, field):
-
     if field == "music":
-        music_add = context.music_add
+        music_add = MusicAdd(context.browser)
         music_add.add_product_btn_click()
-        print('$!!!')
+        context.music_add = music_add
 
+    if field == "film":
+        film_add = FilmAdd(context.browser)
+        film_add.add_product_btn_click()
+        context.film_add = film_add
 
 @then('New "{field}" item was created warning pops up')
 def new_item_created_verify(context, field):
@@ -91,7 +105,9 @@ def new_item_created_verify(context, field):
         music_add.success_message_check()
 
     elif field == "film":
-        pass
+        film_add = context.film_add
+        film_add.success_message_check()
+
     elif field == "card":
         pass
     elif field == "shoes":
@@ -112,12 +128,25 @@ def non_required_fields_input(context, field):
         music_add.country_input()
         music_add.condition_details_input()
         music_add.features_input()
-        time.sleep(3)
+
+    if field == "film":
+        film_add = FilmAdd(context.browser)
+        film_add.release_year_input()
+        film_add.country_input()
+        film_add.features_input()
+        film_add.publisher_input()
+        film_add.condition_details_input()
+        film_add.name_input()
+        film_add.notes_input()
+        context.film_add = film_add
 
 
 @then('"This field is required" warnings pops up under all "{field}" required fields')
 def requred_fields_warning(context, field):
     if field == 'music':
         music_add = context.music_add
-        print('SSS!!!')
         music_add.this_field_is_required_check()
+
+    if field == 'film':
+        film_add = context.film_add
+        film_add.this_field_is_required_check()
