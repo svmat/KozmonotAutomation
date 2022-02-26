@@ -4,6 +4,7 @@ from Pages.cargo_bay_page import CargoBay
 from Pages.select_product_type_menu import SelectProductType
 from Pages.music_add_page import MusicAdd
 from Pages.film_add_page import FilmAdd
+from Pages.card_add_page import CardAdd
 from browser import Browser
 from UIElement import UIElement as Element
 from selenium.webdriver.common.by import By
@@ -74,7 +75,7 @@ def requred_fields_input(context, field):
         music_add.asking_price_input()
         context.music_add = music_add
 
-    if field == "film":
+    elif field == "film":
         film_add = FilmAdd(context.browser)
         film_add.title_input()
         film_add.film_condition_input()
@@ -83,6 +84,18 @@ def requred_fields_input(context, field):
         film_add.quantity_input()
         film_add.asking_price_input()
         context.film_add = film_add
+
+    elif field == "card":
+        card_add = CardAdd(context.browser)
+        card_add.card_name_input()
+        card_add.format_input()
+        card_add.condition_input()
+        card_add.opening_price_input()
+        card_add.card_number_input()
+        card_add.quantity_input()
+        card_add.category_input()
+        card_add.asking_price_input()
+        context.card_add = card_add
 
 
 
@@ -93,10 +106,15 @@ def add_product_btn(context, field):
         music_add.add_product_btn_click()
         context.music_add = music_add
 
-    if field == "film":
+    elif field == "film":
         film_add = FilmAdd(context.browser)
         film_add.add_product_btn_click()
         context.film_add = film_add
+
+    elif field == "card":
+        card_add = CardAdd(context.browser)
+        card_add.add_product_btn_click()
+        context.card_add = card_add
 
 @then('New "{field}" item was created warning pops up')
 def new_item_created_verify(context, field):
@@ -109,7 +127,8 @@ def new_item_created_verify(context, field):
         film_add.success_message_check()
 
     elif field == "card":
-        pass
+        card_add = context.card_add
+        card_add.success_message_check()
     elif field == "shoes":
         pass
 
@@ -129,7 +148,7 @@ def non_required_fields_input(context, field):
         music_add.condition_details_input()
         music_add.features_input()
 
-    if field == "film":
+    elif field == "film":
         film_add = FilmAdd(context.browser)
         film_add.release_year_input()
         film_add.country_input()
@@ -140,13 +159,30 @@ def non_required_fields_input(context, field):
         film_add.notes_input()
         context.film_add = film_add
 
+    elif field == "card":
+        card_add = CardAdd(context.browser)
+        card_add.release_year_input()
+        card_add.country_input()
+        card_add.brand_input()
+        card_add.graded_input()
+        card_add.features_input()
+        card_add.condition_details_input()
+        card_add.official_grade_input()
+        card_add.notes_input()
+        card_add.sku_input()
+        context.card_add = card_add
+
 
 @then('"This field is required" warnings pops up under all "{field}" required fields')
-def requred_fields_warning(context, field):
+def required_fields_warning(context, field):
     if field == 'music':
         music_add = context.music_add
         music_add.this_field_is_required_check()
 
-    if field == 'film':
+    elif field == 'film':
         film_add = context.film_add
         film_add.this_field_is_required_check()
+
+    elif field == 'card':
+        card_add = context.card_add
+        card_add.this_field_is_required_check()
