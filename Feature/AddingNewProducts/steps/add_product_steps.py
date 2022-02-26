@@ -5,6 +5,7 @@ from Pages.select_product_type_menu import SelectProductType
 from Pages.music_add_page import MusicAdd
 from Pages.film_add_page import FilmAdd
 from Pages.card_add_page import CardAdd
+from Pages.shoes_add_page import ShoesAdd
 from browser import Browser
 from UIElement import UIElement as Element
 from selenium.webdriver.common.by import By
@@ -62,7 +63,7 @@ def open_new_product_page(context, field):
 
 
 @when('enter data in "{field}" required fields')
-def requred_fields_input(context, field):
+def required_fields_input(context, field):
     if field == "music":
         music_add = MusicAdd(context.browser)
         music_add.media_condition_input()
@@ -97,6 +98,18 @@ def requred_fields_input(context, field):
         card_add.asking_price_input()
         context.card_add = card_add
 
+    elif field == "shoes":
+        shoes_add = ShoesAdd(context.browser)
+        shoes_add.name_input()
+        shoes_add.format_input()
+        shoes_add.condition_input()
+        shoes_add.opening_price_input()
+        shoes_add.size_input()
+        shoes_add.quantity_input()
+        shoes_add.box_condition_input()
+        shoes_add.asking_price_input()
+        context.shoes_add = shoes_add
+
 
 
 @when('click "Add product" "{field}" button')
@@ -116,6 +129,11 @@ def add_product_btn(context, field):
         card_add.add_product_btn_click()
         context.card_add = card_add
 
+    elif field == "shoes":
+        shoes_add = ShoesAdd(context.browser)
+        shoes_add.add_product_btn_click()
+        context.shoes_add = shoes_add
+
 @then('New "{field}" item was created warning pops up')
 def new_item_created_verify(context, field):
     if field == "music":
@@ -129,8 +147,11 @@ def new_item_created_verify(context, field):
     elif field == "card":
         card_add = context.card_add
         card_add.success_message_check()
+
     elif field == "shoes":
-        pass
+        shoes_add = ShoesAdd(context.browser)
+        shoes_add.success_message_check()
+
 
 
 @when('enter data in "{field}" all non required fields')
@@ -172,6 +193,18 @@ def non_required_fields_input(context, field):
         card_add.sku_input()
         context.card_add = card_add
 
+    elif field == "shoes":
+        shoes_add = ShoesAdd(context.browser)
+        shoes_add.release_year_input()
+        shoes_add.country_input()
+        shoes_add.brand_input()
+        shoes_add.colorway_input()
+        shoes_add.features_input()
+        shoes_add.condition_details_input()
+        shoes_add.notes_input()
+        shoes_add.sku_input()
+        context.shoes_add = shoes_add
+
 
 @then('"This field is required" warnings pops up under all "{field}" required fields')
 def required_fields_warning(context, field):
@@ -186,3 +219,7 @@ def required_fields_warning(context, field):
     elif field == 'card':
         card_add = context.card_add
         card_add.this_field_is_required_check()
+
+    elif field == "shoes":
+        shoes_add = context.shoes_add
+        shoes_add.this_field_is_required_check()

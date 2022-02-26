@@ -15,7 +15,7 @@ Feature: Add new product
 
   Examples:
     |field|
-    |card|
+    |shoes|
 
 
    @positive @skip
@@ -24,10 +24,10 @@ Feature: Add new product
     And enter data in "<field>" required fields
     And enter data in "<field>" all non required fields
     And click "Add product" "<field>" button
-    #Then New "<field>" item was created warning pops up
+    Then New "<field>" item was created warning pops up
        Examples:
     |field|
-    |card|
+    |shoes|
 
 
   @negative @skip
@@ -39,7 +39,7 @@ Feature: Add new product
 
   Examples:
     |field|
-    |card|
+    |shoes|
 
 
 
