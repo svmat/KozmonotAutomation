@@ -15,6 +15,8 @@ class FilmAdd:
         self.format_option = Element(browser, By.XPATH, "//*[@value='VHS']")
         self.quantity = Element(browser, By.XPATH, "//*[@name='quantity']")
         self.asking_price = Element(browser, By.XPATH, "//*[@name='askingPrice']")
+        self.sleeve_cond = Element(browser, By.XPATH, "//*[@name='sleeveCondition']")
+        self.sleeve_cond_option = Element(browser, By.XPATH, "//*[@value='SLD']")
 
         # non required fields
         self.release_year = Element(browser, By.XPATH, "//*[@name='releaseYear']")
@@ -39,7 +41,7 @@ class FilmAdd:
         self.field_is_required_5 = Element(browser, By.XPATH, "//div[1]/div[2]/div[2]/span")
         self.field_is_required_6 = Element(browser, By.XPATH, "//div[1]/div[4]/div[2]/span")
 
-    #required fields
+    # required fields
 
     def title_input(self, name='True Detective 1'):
         self.title.enter_text(name)
@@ -61,7 +63,11 @@ class FilmAdd:
     def asking_price_input(self, a_price='20'):
         self.asking_price.enter_text(a_price)
 
-    #non required fields
+    def sleeve_cond_input(self):
+        self.sleeve_cond.click()
+        self.sleeve_cond_option.click()
+
+    # non required fields
 
     def release_year_input(self):
         self.release_year.click()
@@ -94,7 +100,7 @@ class FilmAdd:
     def success_message_check(self):
         self.success_message.wait_until_visible()
 
-    #This field is required. warning pops up
+    # This field is required. warning pops up
 
     def this_field_is_required_check(self):
         self.field_is_required_1.wait_until_visible()
@@ -103,6 +109,3 @@ class FilmAdd:
         self.field_is_required_4.wait_until_visible()
         self.field_is_required_5.wait_until_visible()
         self.field_is_required_6.wait_until_visible()
-
-
-

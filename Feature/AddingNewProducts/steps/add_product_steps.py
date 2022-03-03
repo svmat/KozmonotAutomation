@@ -18,15 +18,15 @@ URL = "http://app.kozmonot.tech/"
 
 @given('"Cargo Bay" page loaded')
 def load_cargo_bay_page(context):
-    browser = Browser(URL, "chrome")
+    browser = Browser(URL, "remote")
     context.browser = browser
     # sign in procedure
     sign_in_btn = Element(browser, By.XPATH, "//*[text()='Sign In']")
     sign_in_btn.click()
     user_name = Element(browser, By.XPATH, "//*[@id='id_username']")
-    user_name.enter_text("abvgd@gmail.com")
+    user_name.enter_text("qwerty34@gmail.com")
     password = Element(browser, By.XPATH, "//*[@id='id_password']")
-    password.enter_text("Huston66")
+    password.enter_text("Avz#3435")
     sign_in_btn = Element(browser, By.XPATH, "//*[@type='submit']")
     sign_in_btn.click()
     # open cargo bay page
@@ -84,6 +84,7 @@ def required_fields_input(context, field):
         film_add.product_format_input()
         film_add.quantity_input()
         film_add.asking_price_input()
+        film_add.sleeve_cond_input()
         context.film_add = film_add
 
     elif field == "card":
@@ -151,6 +152,8 @@ def new_item_created_verify(context, field):
     elif field == "shoes":
         shoes_add = ShoesAdd(context.browser)
         shoes_add.success_message_check()
+
+    context.browser.shutdown()
 
 
 
@@ -223,3 +226,5 @@ def required_fields_warning(context, field):
     elif field == "shoes":
         shoes_add = context.shoes_add
         shoes_add.this_field_is_required_check()
+
+    context.browser.shutdown()

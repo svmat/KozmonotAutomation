@@ -15,7 +15,8 @@ Feature: Add new product
 
   Examples:
     |field|
-    |shoes|
+    |music|
+    |film|
 
 
    @positive @skip
@@ -27,7 +28,8 @@ Feature: Add new product
     Then New "<field>" item was created warning pops up
        Examples:
     |field|
-    |shoes|
+    |music|
+    |film|
 
 
   @negative @skip
@@ -39,7 +41,8 @@ Feature: Add new product
 
   Examples:
     |field|
-    |shoes|
+    |music|
+    |film|
 
 
 
